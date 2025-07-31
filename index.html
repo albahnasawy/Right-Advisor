@@ -215,8 +215,52 @@
         <div id="page-blog" class="page-content hidden">
              </div>
 
-        <div id="page-contact" class="page-content hidden">
+<div id="page-contact" class="page-content hidden">
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800">هل أنت مستعد للارتقاء بمعاييرك؟</h2>
+                <p class="text-gray-600 mt-4 max-w-2xl mx-auto">تواصل معنا اليوم. فريقنا جاهز للإجابة على استفساراتك وتحديد موعد لاستشارة أولية مجانية.</p>
             </div>
+            <div class="max-w-4xl mx-auto bg-gray-50 p-8 md:p-12 rounded-2xl shadow-xl">
+                
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+
+                    <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+                    
+                    <input type="hidden" name="subject" value="رسالة جديدة من موقع Right Advisor">
+                    
+                    <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+
+
+                    <div id="form-result" class="hidden mb-6 rounded-lg text-center p-4"></div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label for="name" class="block text-gray-700 font-bold mb-2">الاسم الكامل</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-gray-700 font-bold mb-2">البريد الإلكتروني</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label for="subject-input" class="block text-gray-700 font-bold mb-2">الموضوع</label>
+                        <input type="text" id="subject-input" name="message_subject" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-bold mb-2">رسالتك</label>
+                        <textarea id="message" name="message" rows="5" class="w-full px-4 py-3 bg-white border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500" required></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="bg-green-600 text-white text-lg font-bold px-10 py-4 rounded-full hover:bg-green-700 transition duration-300 shadow-lg">إرسال الرسالة</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>            </div>
     </main>
 
     <footer class="bg-gray-800 text-white pt-16 pb-8">
@@ -294,15 +338,51 @@
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
-            const contactForm = document.getElementById('contact-form');
-            if(contactForm) { // Added a check to prevent errors if the contact form page isn't visible initially
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    const formSuccess = document.getElementById('form-success');
-                    if(formSuccess) formSuccess.classList.remove('hidden');
-                    contactForm.reset();
-                    if(formSuccess) setTimeout(() => formSuccess.classList.add('hidden'), 5000);
-                });
+const contactForm = document.getElementById('contact-form');
+const resultDiv = document.getElementById('form-result'); // استخدمنا div جديد للنتيجة
+
+contactForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(contactForm);
+    
+    // إظهار رسالة "جاري الإرسال" للمستخدم
+    resultDiv.innerHTML = "جاري إرسال رسالتك...";
+    resultDiv.classList.remove('hidden', 'bg-green-100', 'text-green-700', 'bg-red-100', 'text-red-700');
+    resultDiv.classList.add('bg-yellow-100', 'text-yellow-700');
+    
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            // في حالة النجاح
+            resultDiv.innerHTML = "شكراً لك! تم استلام رسالتك بنجاح. سنتواصل معك قريباً.";
+            resultDiv.classList.remove('bg-yellow-100', 'text-yellow-700');
+            resultDiv.classList.add('bg-green-100', 'text-green-700');
+            contactForm.reset(); // مسح حقول النموذج
+        } else {
+            // في حالة حدوث خطأ
+            console.error('Error:', data);
+            resultDiv.innerHTML = "عذراً! حدث خطأ أثناء إرسال الرسالة. الرجاء المحاولة مرة أخرى.";
+            resultDiv.classList.remove('bg-yellow-100', 'text-yellow-700');
+            resultDiv.classList.add('bg-red-100', 'text-red-700');
+        }
+    })
+    .catch(error => {
+        // في حالة فشل الاتصال بالشبكة
+        console.error('Error:', error);
+        resultDiv.innerHTML = "عذراً! فشل الاتصال بالخادم. الرجاء التحقق من اتصالك بالإنترنت.";
+        resultDiv.classList.remove('bg-yellow-100', 'text-yellow-700');
+        resultDiv.classList.add('bg-red-100', 'text-red-700');
+    });
+
+    // إخفاء الرسالة بعد 10 ثواني
+    setTimeout(() => {
+        resultDiv.classList.add('hidden');
+    }, 10000);
+});
             }
 
 
