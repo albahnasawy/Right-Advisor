@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Right Advisor - استشارات وتدريب سلامة الغذاء</title>
+    <title>Right Advisor - Food Safety Consulting & Training</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -31,6 +31,11 @@
             filter: grayscale(0%);
             opacity: 1;
         }
+        /* Style for LTR/RTL direction */
+        html[dir="ltr"] .space-x-reverse { --tw-space-x-reverse: 0 !important; }
+        html[dir="rtl"] .space-x-reverse { --tw-space-x-reverse: 1 !important; }
+        html[dir="ltr"] .text-right { text-align: left !important; }
+        html[dir="rtl"] .text-right { text-align: right !important; }
     </style>
 </head>
 <body class="bg-gray-50">
@@ -40,14 +45,15 @@
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
             <div class="flex items-center">
                 <img src="https://res.cloudinary.com/dvqik0oco/image/upload/v1753625098/logo2-02_black_emfhdj.png" alt="Right Advisor Logo" class="h-12 w-auto">
-                <span class="text-2xl font-bold text-gray-800 ml-4">Right Advisor</span>
+                <span class="text-2xl font-bold text-gray-800 mx-4" data-lang-key="companyName">Right Advisor</span>
             </div>
             <div class="hidden md:flex items-center space-x-8 space-x-reverse">
-                <a href="#home" class="text-gray-600 hover:text-blue-700 font-semibold">الرئيسية</a>
-                <a href="#about" class="text-gray-600 hover:text-blue-700 font-semibold">نبذة عن المؤسس</a>
-                <a href="#services" class="text-gray-600 hover:text-blue-700 font-semibold">خدماتنا</a>
-                <a href="#training" class="text-gray-600 hover:text-blue-700 font-semibold">التدريب</a>
-                <a href="#contact" class="text-gray-600 hover:text-blue-700 font-semibold">تواصل معنا</a>
+                <a href="#home" class="text-gray-600 hover:text-blue-700 font-semibold" data-lang-key="navHome">Home</a>
+                <a href="#about" class="text-gray-600 hover:text-blue-700 font-semibold" data-lang-key="navAbout">About Founder</a>
+                <a href="#services" class="text-gray-600 hover:text-blue-700 font-semibold" data-lang-key="navServices">Services</a>
+                <a href="#training" class="text-gray-600 hover:text-blue-700 font-semibold" data-lang-key="navTraining">Training</a>
+                <a href="#contact" class="text-gray-600 hover:text-blue-700 font-semibold" data-lang-key="navContact">Contact Us</a>
+                <button id="lang-switcher" class="text-blue-600 hover:text-blue-800 font-bold border border-blue-600 px-3 py-1 rounded-md transition-all duration-300">العربية</button>
             </div>
             <div class="md:hidden">
                 <button id="menu-btn" class="text-gray-800 focus:outline-none">
@@ -57,11 +63,14 @@
         </nav>
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="md:hidden hidden bg-white py-4">
-            <a href="#home" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50">الرئيسية</a>
-            <a href="#about" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50">نبذة عن المؤسس</a>
-            <a href="#services" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50">خدماتنا</a>
-            <a href="#training" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50">التدريب</a>
-            <a href="#contact" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50">تواصل معنا</a>
+            <a href="#home" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50" data-lang-key="navHomeMobile">Home</a>
+            <a href="#about" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50" data-lang-key="navAboutMobile">About Founder</a>
+            <a href="#services" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50" data-lang-key="navServicesMobile">Services</a>
+            <a href="#training" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50" data-lang-key="navTrainingMobile">Training</a>
+            <a href="#contact" class="block text-center py-2 px-4 text-gray-600 hover:bg-blue-50" data-lang-key="navContactMobile">Contact Us</a>
+            <div class="text-center mt-2">
+                <button id="lang-switcher-mobile" class="text-blue-600 hover:text-blue-800 font-bold border border-blue-600 px-4 py-2 rounded-md transition-all duration-300">العربية</button>
+            </div>
         </div>
     </header>
 
@@ -69,9 +78,9 @@
         <!-- Hero Section -->
         <section id="home" class="hero-bg text-white py-32">
             <div class="container mx-auto px-6 text-center">
-                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4">التميز في استشارات سلامة الغذاء</h1>
-                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8">نقدم حلولاً متكاملة وموثوقة لضمان تطبيق أعلى معايير الجودة في منشأتك الغذائية، بقيادة خبرة فريدة في المجال.</p>
-                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300">اطلب استشارة الآن</a>
+                <h1 class="text-4xl md:text-6xl font-extrabold leading-tight mb-4" data-lang-key="heroTitle">Your Trusted Partner for Food Safety</h1>
+                <p class="text-lg md:text-xl max-w-3xl mx-auto mb-8" data-lang-key="heroSubtitle">We provide integrated and reliable solutions to ensure the highest quality standards in your food establishment, led by unique industry expertise.</p>
+                <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300" data-lang-key="heroButton">Request a Consultation</a>
             </div>
         </section>
 
@@ -79,25 +88,34 @@
         <section id="about" class="py-20 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800">تعرف على مؤسس الشركة ومديرها</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">خبرة استثنائية تضعها Right Advisor في خدمتك.</p>
+                    <h2 class="text-4xl font-bold text-gray-800" data-lang-key="founderTitle">Meet the Founder and Director</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-lang-key="founderSubtitle">Exceptional experience that Right Advisor puts at your service.</p>
                 </div>
-                <div class="bg-gray-50 p-8 md:p-12 rounded-lg shadow-lg">
-                    <div class="text-center">
-                        <h3 class="text-3xl font-bold text-blue-800 mb-6">كبير مفتشين سابق بالهيئة القومية لسلامة الغذاء</h3>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <!-- Image Column -->
+                    <div class="md:w-1/3 lg:w-1/4">
+                        <img src="https://res.cloudinary.com/dvqik0oco/image/upload/v1755298837/Beige_White_Modern_Professional_Life_Coach_Instagram_Post_xzizdt.png" alt="Founder of Right Advisor" class="rounded-lg shadow-2xl w-full h-auto object-cover">
                     </div>
-                    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-center md:text-right">
-                        <div class="founder-feature bg-white p-6 rounded-lg transition duration-300">
-                            <h4 class="text-xl font-bold text-gray-800">مؤسس إدارة المنشآت السياحية</h4>
-                            <p class="mt-2 text-gray-600">أحد مؤسسي إدارة الرقابة على المنشآت السياحية بالهيئة، والمسؤول عن منطقة البحر الأحمر وجنوب سيناء.</p>
-                        </div>
-                        <div class="founder-feature bg-white p-6 rounded-lg transition duration-300">
-                            <h4 class="text-xl font-bold text-gray-800">مؤسس إدارة الشكاوى</h4>
-                            <p class="mt-2 text-gray-600">كان أحد أفراد الفريق المؤسس لإدارة الشكاوى الغذائية بالهيئة القومية لسلامة الغذاء.</p>
-                        </div>
-                        <div class="founder-feature bg-white p-6 rounded-lg transition duration-300">
-                            <h4 class="text-xl font-bold text-gray-800">مدقق رئيسي معتمد (BRCGS)</h4>
-                            <p class="mt-2 text-gray-600">حاصل على شهادة BRCGS Food Safety Lead Auditor للإصدار التاسع، وهي من أعلى الشهادات الدولية في المجال.</p>
+                    <!-- Text Content Column -->
+                    <div class="md:w-2/3 lg:w-3/4">
+                        <div class="bg-gray-50 p-8 rounded-lg shadow-lg">
+                            <div class="text-center mb-6">
+                                <h3 class="text-2xl md:text-3xl font-bold text-blue-800" data-lang-key="founderCred">Former Senior Inspector at the National Food Safety Authority of Egypt (NFSA)</h3>
+                            </div>
+                            <div class="grid md:grid-cols-2 gap-6 text-center md:text-right">
+                                <div class="founder-feature bg-white p-6 rounded-lg transition duration-300">
+                                    <h4 class="text-xl font-bold text-gray-800" data-lang-key="founderFeature1Title">Founder of Tourism Establishments Dept.</h4>
+                                    <p class="mt-2 text-gray-600" data-lang-key="founderFeature1Desc">Co-founder of the tourism establishments control department at NFSA, and was responsible for the Red Sea and South Sinai region.</p>
+                                </div>
+                                <div class="founder-feature bg-white p-6 rounded-lg transition duration-300">
+                                    <h4 class="text-xl font-bold text-gray-800" data-lang-key="founderFeature2Title">Founder of Complaints Dept.</h4>
+                                    <p class="mt-2 text-gray-600" data-lang-key="founderFeature2Desc">A member of the founding team for the food complaints management department at the National Food Safety Authority.</p>
+                                </div>
+                                <div class="md:col-span-2 founder-feature bg-white p-6 rounded-lg transition duration-300">
+                                    <h4 class="text-xl font-bold text-gray-800" data-lang-key="founderFeature3Title">Certified Lead Auditor (BRCGS)</h4>
+                                    <p class="mt-2 text-gray-600" data-lang-key="founderFeature3Desc">Certified BRCGS Food Safety Lead Auditor for Issue 9, one of the highest international certifications in the field.</p>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -108,8 +126,8 @@
         <section id="services" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800">خدماتنا المتكاملة</h2>
-                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto">نقدم باقة شاملة من الخدمات الاستشارية والرقابية لضمان التزامكم بأعلى معايير سلامة الغذاء العالمية.</p>
+                    <h2 class="text-4xl font-bold text-gray-800" data-lang-key="servicesTitle">Our Integrated Services</h2>
+                    <p class="text-gray-600 mt-4 max-w-2xl mx-auto" data-lang-key="servicesSubtitle">We offer a comprehensive package of consulting and auditing services to ensure your compliance with the highest international food safety standards.</p>
                 </div>
                 <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-10">
                     <!-- Service Card 1 -->
@@ -117,48 +135,48 @@
                         <div class="bg-blue-100 text-blue-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">تأهيل أنظمة الجودة</h3>
-                        <p class="text-gray-600">نساعدك في تأسيس وتطبيق أنظمة الجودة العالمية مثل HACCP, ISO 22000, FSSC 22000, BRCGS للحصول على الاعتمادات الدولية.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service1Title">Quality Systems Certification</h3>
+                        <p class="text-gray-600" data-lang-key="service1Desc">We help you establish and implement global quality systems like HACCP, ISO 22000, FSSC 22000, and BRCGS to achieve international accreditation.</p>
                     </div>
                     <!-- Service Card 2 -->
                     <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 text-center">
                         <div class="bg-indigo-100 text-indigo-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">التدقيق الداخلي وتدقيق الموردين</h3>
-                        <p class="text-gray-600">نقوم بإجراء تدقيق داخلي احترافي على نظامك، بالإضافة إلى تدقيق الطرف الثاني (Second Party Audits) على الموردين لضمان جودة سلسلة الإمداد.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service2Title">Internal & Supplier Audits</h3>
+                        <p class="text-gray-600" data-lang-key="service2Desc">We conduct professional internal audits on your system, as well as second-party audits on your suppliers to ensure supply chain quality.</p>
                     </div>
                     <!-- Service Card 3 -->
                     <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 text-center">
                         <div class="bg-teal-100 text-teal-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">تفتيش سلامة الغذاء</h3>
-                        <p class="text-gray-600">نقدم زيارات تفتيشية دورية ومفاجئة لمنشأتك لتقييم مدى الالتزام بمعايير سلامة الغذاء وتقديم تقارير مفصلة للإجراءات التصحيحية.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service3Title">Food Safety Inspections</h3>
+                        <p class="text-gray-600" data-lang-key="service3Desc">We provide periodic and unannounced inspection visits to your facility to assess compliance with food safety standards and provide detailed corrective action reports.</p>
                     </div>
                     <!-- Service Card 4 -->
                     <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 text-center">
                         <div class="bg-yellow-100 text-yellow-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">تقييمات الصحة والنظافة</h3>
-                        <p class="text-gray-600">نقدم تقييمات شاملة للنظافة والصحة العامة لضمان بيئة آمنة وصحية، وتقليل المخاطر المتعلقة بالصحة، وحماية سمعة علامتك التجارية.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service4Title">Health & Hygiene Audits</h3>
+                        <p class="text-gray-600" data-lang-key="service4Desc">We offer comprehensive assessments of hygiene and public health to ensure a safe environment, minimize health risks, and protect your brand's reputation.</p>
                     </div>
                     <!-- Service Card 5 -->
                     <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 text-center">
                         <div class="bg-green-100 text-green-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                            <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 18.657A8 8 0 016.343 7.343S7 9 9 10c0-2 .5-5 2.986-7.014A8.003 8.003 0 0122 12c0 3-1 7-7 7a8.003 8.003 0 01-7.343-4.343z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">تدقيق الاستدامة</h3>
-                        <p class="text-gray-600">نساعدك على تقييم وتحسين ممارسات الاستدامة في منشأتك، مع التركيز على إدارة النفايات، استهلاك الطاقة، والمصادر الأخلاقية.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service5Title">Sustainability Audits</h3>
+                        <p class="text-gray-600" data-lang-key="service5Desc">We help you assess and improve your facility's sustainability practices, focusing on waste management, energy consumption, and ethical sourcing.</p>
                     </div>
                     <!-- Service Card 6 -->
                     <div class="service-card bg-white p-8 rounded-xl shadow-lg transition duration-300 text-center">
                         <div class="bg-pink-100 text-pink-600 rounded-full w-20 h-20 flex items-center justify-center mb-6 mx-auto">
                             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
                         </div>
-                        <h3 class="text-2xl font-bold text-gray-800 mb-3">تقييم معايير الخدمة</h3>
-                        <p class="text-gray-600">نقيّم تجربة العميل ومعايير علامتك التجارية من خلال زيارات المتسوق السري (Mystery Guest) لضمان تقديم خدمة استثنائية.</p>
+                        <h3 class="text-2xl font-bold text-gray-800 mb-3" data-lang-key="service6Title">Service Standards Audits</h3>
+                        <p class="text-gray-600" data-lang-key="service6Desc">We evaluate the customer experience and your brand standards through Mystery Guest visits to ensure exceptional service delivery.</p>
                     </div>
                 </div>
             </div>
@@ -172,9 +190,9 @@
                         <img src="https://images.unsplash.com/photo-1573496130407-57329f01f769?q=80&w=2669&auto=format&fit=crop" class="rounded-lg shadow-2xl" alt="Training Session">
                     </div>
                     <div class="md:w-1/2 text-center md:text-right">
-                        <h2 class="text-4xl font-bold text-gray-800 mb-4">برامج تدريبية معتمدة</h2>
-                        <p class="text-gray-600 text-lg mb-8">استثمر في فريقك مع دوراتنا المصممة لتلبية احتياجات سوق العمل وتتوافق مع أحدث المعايير الدولية. خريجونا يحصلون على شهادات موثقة يمكن التحقق من صحتها إلكترونيًا.</p>
-                        <a href="https://albahnasawy.github.io/rightadvisor-cert-verify/" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block">التحقق من صحة شهادة</a>
+                        <h2 class="text-4xl font-bold text-gray-800 mb-4" data-lang-key="trainingTitle">Certified Training Programs</h2>
+                        <p class="text-gray-600 text-lg mb-8" data-lang-key="trainingDesc">Invest in your team with our courses designed to meet market needs and comply with the latest international standards. Our graduates receive verifiable certificates.</p>
+                        <a href="https://albahnasawy.github.io/rightadvisor-cert-verify/" target="_blank" class="bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-8 rounded-full text-lg transition duration-300 inline-block" data-lang-key="trainingButton">Verify a Certificate</a>
                     </div>
                 </div>
             </div>
@@ -184,11 +202,10 @@
         <section id="clients" class="py-20">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16">
-                    <h2 class="text-4xl font-bold text-gray-800">شركاء النجاح</h2>
-                    <p class="text-gray-600 mt-4">نفخر بثقة كبرى الشركات والمنشآت في خدماتنا.</p>
+                    <h2 class="text-4xl font-bold text-gray-800" data-lang-key="clientsTitle">Our Success Partners</h2>
+                    <p class="text-gray-600 mt-4" data-lang-key="clientsSubtitle">We are proud of the trust major companies and establishments place in our services.</p>
                 </div>
                 <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-8 items-center">
-                    <!-- استبدل # بروابط العملاء والصور بصور شعاراتهم -->
                     <a href="#" class="flex justify-center"><img src="https://placehold.co/150x80/e2e8f0/a0aec0?text=Client+Logo" alt="Client Logo 1" class="client-logo"></a>
                     <a href="#" class="flex justify-center"><img src="https://placehold.co/150x80/e2e8f0/a0aec0?text=Client+Logo" alt="Client Logo 2" class="client-logo"></a>
                     <a href="#" class="flex justify-center"><img src="https://placehold.co/150x80/e2e8f0/a0aec0?text=Client+Logo" alt="Client Logo 3" class="client-logo"></a>
@@ -202,39 +219,31 @@
         <section id="contact" class="bg-gray-100 py-20">
             <div class="container mx-auto px-6">
                  <div class="text-center mb-12">
-                    <h2 class="text-4xl font-bold text-gray-800">تواصل معنا</h2>
-                    <p class="text-gray-600 mt-4">هل لديك استفسار؟ فريقنا جاهز لمساعدتك. املأ النموذج أو تواصل معنا مباشرة.</p>
+                    <h2 class="text-4xl font-bold text-gray-800" data-lang-key="contactTitle">Contact Us</h2>
+                    <p class="text-gray-600 mt-4" data-lang-key="contactSubtitle">Have an inquiry? Our team is ready to help. Fill out the form or contact us directly.</p>
                 </div>
                 <div class="max-w-4xl mx-auto bg-white p-10 rounded-lg shadow-xl">
-                    <!-- 
-                        !!! تعليمات هامة لتفعيل نموذج الإرسال !!!
-                        1. اذهب إلى موقع https://formspree.io/
-                        2. أنشئ حسابًا مجانيًا.
-                        3. أنشئ نموذجًا جديدًا (New Form) واربطه ببريدك الإلكتروني: rightadvisor.eg@gmail.com
-                        4. سيمنحك الموقع رابطًا فريدًا (Endpoint).
-                        5. انسخ هذا الرابط واستبدله بالرابط الموجود في السطر التالي في خاصية 'action'.
-                    -->
-                    <form action="https://formspree.io/f/xeozdwdb" method="POST">
+                    <form action="https://formspree.io/f/YOUR_UNIQUE_FORM_ID" method="POST">
                         <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                                <label for="name" class="font-semibold text-gray-700 block mb-2">الاسم الكامل</label>
+                                <label for="name" class="font-semibold text-gray-700 block mb-2" data-lang-key="formName">Full Name</label>
                                 <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                             </div>
                             <div>
-                                <label for="email" class="font-semibold text-gray-700 block mb-2">البريد الإلكتروني</label>
+                                <label for="email" class="font-semibold text-gray-700 block mb-2" data-lang-key="formEmail">Email Address</label>
                                 <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                             </div>
                             <div class="md:col-span-2">
-                                <label for="subject" class="font-semibold text-gray-700 block mb-2">الموضوع</label>
+                                <label for="subject" class="font-semibold text-gray-700 block mb-2" data-lang-key="formSubject">Subject</label>
                                 <input type="text" id="subject" name="subject" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required>
                             </div>
                             <div class="md:col-span-2">
-                                <label for="message" class="font-semibold text-gray-700 block mb-2">رسالتك</label>
+                                <label for="message" class="font-semibold text-gray-700 block mb-2" data-lang-key="formMessage">Your Message</label>
                                 <textarea id="message" name="message" rows="5" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
                             </div>
                         </div>
                         <div class="text-center mt-8">
-                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-12 rounded-full text-lg transition duration-300">إرسال الرسالة</button>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-12 rounded-full text-lg transition duration-300" data-lang-key="formButton">Send Message</button>
                         </div>
                     </form>
                 </div>
@@ -245,12 +254,152 @@
     <!-- Footer -->
     <footer class="bg-gray-800 text-white py-10">
         <div class="container mx-auto px-6 text-center">
-            <p>&copy; <span id="current-year"></span> Right Advisor. جميع الحقوق محفوظة.</p>
-            <p class="mt-2">شريككم نحو التميز في سلامة الغذاء</p>
+            <div class="mb-6 flex justify-center items-center space-x-6 space-x-reverse text-lg flex-wrap gap-4">
+                <a href="tel:+201000823808" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                    <svg class="w-5 h-5 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg>
+                    <span>+201000823808</span>
+                </a>
+                <a href="mailto:rightadvisor.eg@gmail.com" class="flex items-center text-gray-300 hover:text-white transition-colors">
+                    <svg class="w-5 h-5 me-2" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg>
+                    <span>rightadvisor.eg@gmail.com</span>
+                </a>
+            </div>
+            <p>&copy; <span id="current-year"></span> <span data-lang-key="footerRights">Right Advisor. All rights reserved.</span></p>
+            <p class="mt-2" data-lang-key="footerSlogan">Your partner towards excellence in food safety</p>
         </div>
     </footer>
 
     <script>
+        // Translations Dictionary
+        const translations = {
+            en: {
+                companyName: "Right Advisor",
+                navHome: "Home",
+                navAbout: "About Founder",
+                navServices: "Services",
+                navTraining: "Training",
+                navContact: "Contact Us",
+                navHomeMobile: "Home",
+                navAboutMobile: "About Founder",
+                navServicesMobile: "Services",
+                navTrainingMobile: "Training",
+                navContactMobile: "Contact Us",
+                heroTitle: "Your Trusted Partner for Food Safety",
+                heroSubtitle: "We provide integrated and reliable solutions to ensure the highest quality standards in your food establishment, led by unique industry expertise.",
+                heroButton: "Request a Consultation",
+                founderTitle: "Meet the Founder and Director",
+                founderSubtitle: "Exceptional experience that Right Advisor puts at your service.",
+                founderCred: "Former Senior Inspector at the National Food Safety Authority of Egypt (NFSA)",
+                founderFeature1Title: "Founder of Tourism Establishments Dept.",
+                founderFeature1Desc: "Co-founder of the tourism establishments control department at NFSA, and was responsible for the Red Sea and South Sinai region.",
+                founderFeature2Title: "Founder of Complaints Dept.",
+                founderFeature2Desc: "A member of the founding team for the food complaints management department at the National Food Safety Authority.",
+                founderFeature3Title: "Certified Lead Auditor (BRCGS)",
+                founderFeature3Desc: "Certified BRCGS Food Safety Lead Auditor for Issue 9, one of the highest international certifications in the field.",
+                servicesTitle: "Our Integrated Services",
+                servicesSubtitle: "We offer a comprehensive package of consulting and auditing services to ensure your compliance with the highest international food safety standards.",
+                service1Title: "Quality Systems Certification",
+                service1Desc: "We help you establish and implement global quality systems like HACCP, ISO 22000, FSSC 22000, and BRCGS to achieve international accreditation.",
+                service2Title: "Internal & Supplier Audits",
+                service2Desc: "We conduct professional internal audits on your system, as well as second-party audits on your suppliers to ensure supply chain quality.",
+                service3Title: "Food Safety Inspections",
+                service3Desc: "We provide periodic and unannounced inspection visits to your facility to assess compliance with food safety standards and provide detailed corrective action reports.",
+                service4Title: "Health & Hygiene Audits",
+                service4Desc: "We offer comprehensive assessments of hygiene and public health to ensure a safe environment, minimize health risks, and protect your brand's reputation.",
+                service5Title: "Sustainability Audits",
+                service5Desc: "We help you assess and improve your facility's sustainability practices, focusing on waste management, energy consumption, and ethical sourcing.",
+                service6Title: "Service Standards Audits",
+                service6Desc: "We evaluate the customer experience and your brand standards through Mystery Guest visits to ensure exceptional service delivery.",
+                trainingTitle: "Certified Training Programs",
+                trainingDesc: "Invest in your team with our courses designed to meet market needs and comply with the latest international standards. Our graduates receive verifiable certificates.",
+                trainingButton: "Verify a Certificate",
+                clientsTitle: "Our Success Partners",
+                clientsSubtitle: "We are proud of the trust major companies and establishments place in our services.",
+                contactTitle: "Contact Us",
+                contactSubtitle: "Have an inquiry? Our team is ready to help. Fill out the form or contact us directly.",
+                formName: "Full Name",
+                formEmail: "Email Address",
+                formSubject: "Subject",
+                formMessage: "Your Message",
+                formButton: "Send Message",
+                footerRights: "Right Advisor. All rights reserved.",
+                footerSlogan: "Your partner towards excellence in food safety"
+            },
+            ar: {
+                companyName: "Right Advisor",
+                navHome: "الرئيسية",
+                navAbout: "نبذة عن المؤسس",
+                navServices: "خدماتنا",
+                navTraining: "التدريب",
+                navContact: "تواصل معنا",
+                navHomeMobile: "الرئيسية",
+                navAboutMobile: "نبذة عن المؤسس",
+                navServicesMobile: "خدماتنا",
+                navTrainingMobile: "التدريب",
+                navContactMobile: "تواصل معنا",
+                heroTitle: "شريكك الموثوق لسلامة الغذاء",
+                heroSubtitle: "نقدم حلولاً متكاملة وموثوقة لضمان تطبيق أعلى معايير الجودة في منشأتك الغذائية، بقيادة خبرة فريدة في المجال.",
+                heroButton: "اطلب استشارة الآن",
+                founderTitle: "تعرف على مؤسس الشركة ومديرها",
+                founderSubtitle: "خبرة استثنائية تضعها Right Advisor في خدمتك.",
+                founderCred: "كبير مفتشين سابق بالهيئة القومية لسلامة الغذاء",
+                founderFeature1Title: "مؤسس إدارة المنشآت السياحية",
+                founderFeature1Desc: "أحد مؤسسي إدارة الرقابة على المنشآت السياحية بالهيئة، والمسؤول عن منطقة البحر الأحمر وجنوب سيناء.",
+                founderFeature2Title: "مؤسس إدارة الشكاوى",
+                founderFeature2Desc: "كان أحد أفراد الفريق المؤسس لإدارة الشكاوى الغذائية بالهيئة القومية لسلامة الغذاء.",
+                founderFeature3Title: "مدقق رئيسي معتمد (BRCGS)",
+                founderFeature3Desc: "حاصل على شهادة BRCGS Food Safety Lead Auditor للإصدار التاسع، وهي من أعلى الشهادات الدولية في المجال.",
+                servicesTitle: "خدماتنا المتكاملة",
+                servicesSubtitle: "نقدم باقة شاملة من الخدمات الاستشارية والرقابية لضمان التزامكم بأعلى معايير سلامة الغذاء العالمية.",
+                service1Title: "تأهيل أنظمة الجودة",
+                service1Desc: "نساعدك في تأسيس وتطبيق أنظمة الجودة العالمية مثل HACCP, ISO 22000, FSSC 22000, BRCGS للحصول على الاعتمادات الدولية.",
+                service2Title: "التدقيق الداخلي وتدقيق الموردين",
+                service2Desc: "نقوم بإجراء تدقيق داخلي احترافي على نظامك، بالإضافة إلى تدقيق الطرف الثاني (Second Party Audits) على الموردين لضمان جودة سلسلة الإمداد.",
+                service3Title: "تفتيش سلامة الغذاء",
+                service3Desc: "نقدم زيارات تفتيشية دورية ومفاجئة لمنشأتك لتقييم مدى الالتزام بمعايير سلامة الغذاء وتقديم تقارير مفصلة للإجراءات التصحيحية.",
+                service4Title: "تقييمات الصحة والنظافة",
+                service4Desc: "نقدم تقييمات شاملة للنظافة والصحة العامة لضمان بيئة آمنة وصحية، وتقليل المخاطر المتعلقة بالصحة، وحماية سمعة علامتك التجارية.",
+                service5Title: "تدقيق الاستدامة",
+                service5Desc: "نساعدك على تقييم وتحسين ممارسات الاستدامة في منشأتك، مع التركيز على إدارة النفايات، استهلاك الطاقة، والمصادر الأخلاقية.",
+                service6Title: "تقييم معايير الخدمة",
+                service6Desc: "نقيّم تجربة العميل ومعايير علامتك التجارية من خلال زيارات المتسوق السري (Mystery Guest) لضمان تقديم خدمة استثنائية.",
+                trainingTitle: "برامج تدريبية معتمدة",
+                trainingDesc: "استثمر في فريقك مع دوراتنا المصممة لتلبية احتياجات سوق العمل وتتوافق مع أحدث المعايير الدولية. خريجونا يحصلون على شهادات موثقة يمكن التحقق من صحتها إلكترونيًا.",
+                trainingButton: "التحقق من صحة شهادة",
+                clientsTitle: "شركاء النجاح",
+                clientsSubtitle: "نفخر بثقة كبرى الشركات والمنشآت في خدماتنا.",
+                contactTitle: "تواصل معنا",
+                contactSubtitle: "هل لديك استفسار؟ فريقنا جاهز لمساعدتك. املأ النموذج أو تواصل معنا مباشرة.",
+                formName: "الاسم الكامل",
+                formEmail: "البريد الإلكتروني",
+                formSubject: "الموضوع",
+                formMessage: "رسالتك",
+                formButton: "إرسال الرسالة",
+                footerRights: "Right Advisor. جميع الحقوق محفوظة.",
+                footerSlogan: "شريككم نحو التميز في سلامة الغذاء"
+            }
+        };
+
+        const setLanguage = (lang) => {
+            document.documentElement.lang = lang;
+            document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+            
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                if (translations[lang][key]) {
+                    element.textContent = translations[lang][key];
+                }
+            });
+
+            // Update switcher buttons text
+            const newLangText = lang === 'ar' ? 'English' : 'العربية';
+            document.getElementById('lang-switcher').textContent = newLangText;
+            document.getElementById('lang-switcher-mobile').textContent = newLangText;
+
+            // Save preference
+            localStorage.setItem('language', lang);
+        };
+
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -258,8 +407,28 @@
             mobileMenu.classList.toggle('hidden');
         });
 
+        // Language switcher logic
+        const langSwitcher = document.getElementById('lang-switcher');
+        const langSwitcherMobile = document.getElementById('lang-switcher-mobile');
+
+        const switchLang = () => {
+            const currentLang = document.documentElement.lang;
+            setLanguage(currentLang === 'ar' ? 'en' : 'ar');
+        };
+
+        langSwitcher.addEventListener('click', switchLang);
+        langSwitcherMobile.addEventListener('click', () => {
+            switchLang();
+            mobileMenu.classList.add('hidden'); // Hide menu after selection
+        });
+
         // Set current year in footer
         document.getElementById('current-year').textContent = new Date().getFullYear();
+
+        // On page load, check for saved language preference or default to English
+        const savedLang = localStorage.getItem('language');
+        setLanguage(savedLang || 'en');
+
     </script>
 
 </body>
